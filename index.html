@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokenath Drivers Centre & Travels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            animation: backgroundAnimation 10s infinite alternate;
+            overflow-x: hidden;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(to right, #ff7e5f, #feb47b); }
+            100% { background: linear-gradient(to right, #6a11cb, #2575fc); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Logo hover effect */
+        .header img {
+            width: 200px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .header img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .button-container a {
+            display: inline-block;
+            background-color: orange;
+            padding: 12px 20px;
+            color: blue;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .button-container a:hover {
+            background-color: darkorange;
+            transform: scale(1.1);
+        }
+
+        .video-section iframe {
+            width: 80%;
+            height: 400px;
+            border-radius: 8px;
+        }
+
+        .map-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .map-section a {
+            background-color: red;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .map-section a:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .video-section iframe {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header fade-in-section">
+            <img src="LDC&T.png" alt="Lokenath Drivers Centre & Travels">
+            <h1>LOKENATH DRIVERS CENTRE & TRAVELS (LDC&T)</h1>
+        </div>
+
+        <p class="fade-in-section">Experienced drivers and rental cars are provided.<br> <br> Booking Time: 06:00AM To 11:30PM</p>
+
+        <div class="button-container fade-in-section">
+            <a href="Driver Services.html">→ Driver Services</a>
+            <a href="Car Services.html">→ Car Services</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSegMW0jRELVLbgQWDoYpkAwQAcyp_m6IPLkWGvkH1KWFzltcQ/viewform?usp=sf_link">→ Driver Registration</a>
+        </div>
+
+        <div class="contact-section fade-in-section">
+            <a href="tel:+91 9748144920"><img src="call.png" alt="Call" width="40"></a>
+            <a href="https://wa.me/+919062538991" target="_blank"><img src="wp.png" alt="WhatsApp" width="40"></a>
+        </div>
+
+        <hr>
+
+        <div class="map-section fade-in-section">
+            <a href="https://www.google.com/maps/place/LOKENATH+DRIVERS+CENTRE+(LDC)/@22.4604123,88.408502,17z" target="_blank">📍 View on Google Maps</a>
+        </div>
+<br>
+        <div class="section-images fade-in-section">
+            <img src="IND MAP1.jpg" alt="India Map" width="48%">
+            <img src="WB MAP.jpg" alt="West Bengal Map" width="48%">
+        </div>
+
+        <hr>
+<h1>Video</h1>
+
+        <div class="video-section fade-in-section">
+            <iframe src="https://www.youtube.com/embed/aZmQd4AEf7g?autoplay=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll(".fade-in-section");
+            const options = {
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
