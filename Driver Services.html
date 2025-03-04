@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lokenath Drivers Centre (LDC)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #2c3e50, #4ca1af);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hard Wipe Right Animation */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #2c3e50;
+            z-index: 9999;
+            animation: hardWipeRight 1s ease-out forwards;
+        }
+
+        @keyframes hardWipeRight {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Initial fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section animation */
+        .container, .catalog-section, .owner-section, .drivers-section {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+
+        .container.show, .catalog-section.show, .owner-section.show, .drivers-section.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Staggered delays */
+        .catalog-section.show { transition-delay: 0.2s; }
+        .owner-section.show { transition-delay: 0.4s; }
+        .drivers-section.show { transition-delay: 0.6s; }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            color: #333;
+            text-align: center;
+        }
+
+        /* Logo hover effect */
+        .header img {
+            width: 200px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .header img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .nav-links a, .contact-links a {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    background: #4399a8;
+    border-radius: 5px;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.nav-links a:hover, .contact-links a:hover {
+    background: linear-gradient(45deg, #19474f, #c0392b);
+    transform: scale(1.1);
+    box-shadow: 0px 5px 15px rgba(231, 76, 60, 0.6);
+}
+
+        .call-btn { background: #28a745; }
+        .call-btn:hover { background: #218838; }
+        .whatsapp-btn { background: #25D366; }
+        .whatsapp-btn:hover { background: #1da851; }
+
+        .catalog-section img, .owner-section img, .drivers-section img {
+            width: 40%;
+            border-radius: 10px;
+            margin: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .catalog-section img:hover, .owner-section img:hover, .drivers-section img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="LDC.png" alt="Lokenath Drivers Centre & Travels">
+   
+            
+        </div>
+        <h1>LOKENATH DRIVERS CENTRE (LDC)</h1>
+        <p>We provide experienced drivers.<br><br>
+           Our services are designed to offer a safe, reliable, and comfortable travel experience.<br><br>
+           Join us on your next adventure with our reliable drivers!<br><br> Booking Time - 06:00AM To 11:30PM</p>
+
+        <div class="contact-links">
+            <a href="index.html">Home</a>
+            <a href="Car Services.html">Car Services</a>
+<a href="tel:+919748144920" class="call-btn"><img src="call1.png" alt="call" width="40"></a>
+            <a href="https://wa.me/+919062538991" class="whatsapp-btn"><img src="wpb.png" alt="WhatsApp" width="40"></a>
+
+
+        </div>
+        <h1>Catalogues</h1>
+        <div class="catalog-section">
+            <img src="ldc1.jpg" alt="Service 1">
+            <img src="ldc2.jpg" alt="Service 2">
+            <img src="ldc3.jpg" alt="Service 3">
+            <img src="ldc4.jpg" alt="Service 4">
+        </div>
+        <div class="owner-section">
+            <h2>Owner</h2>
+            <img src="owner.jpg" alt="Owner">
+        </div>
+        <div class="drivers-section">
+            <h2>Our Drivers</h2>
+            <div class="catalog-section">
+                <img src="driver1.jpg" alt="Driver 1">
+                <img src="driver2.jpg" alt="Driver 2">
+                <img src="driver3.jpg" alt="Driver 3">
+                <img src="driver4.jpg" alt="Driver 4">
+                <img src="driver5.jpg" alt="Driver 5">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector(".container").classList.add("show");
+        });
+
+        window.addEventListener("scroll", function() {
+            let elements = document.querySelectorAll(".catalog-section, .owner-section, .drivers-section");
+            elements.forEach((el) => {
+                let position = el.getBoundingClientRect().top;
+                let screenHeight = window.innerHeight;
+                if (position < screenHeight - 100) {
+                    el.classList.add("show");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
