@@ -108,7 +108,7 @@
 .catalog-section img {
     	    width: 40% !important;
  	    border-radius: 10px;
-            margin: 10px;
+            margin: 52px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             display: inline-block;
@@ -123,22 +123,40 @@
             display: inline-block;
 }
 
-.drivers-section img {
-   	    width: 18% !important;
- 	    border-radius: 20px;
-            margin: 1px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            display: inline-block;
+.drivers-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    text-align: center;
 }
 
-  .catalog-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+.driver-profile {
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.driver-profile img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
 
+.driver-profile img:hover,.driver-profile p:hover {
+    transform: scale(1.05);
+}
+
+.driver-profile p {
+    margin-top: 8px;
+    font-weight: bold;
+    color: black;
+}
 
 
         .catalog-section img:hover, .owner-section img:hover, .drivers-section img:hover {
@@ -170,24 +188,39 @@
         <div class="catalog-section">
             <img src="ldc1.jpg" alt="Service 1">
             <img src="ldc2.jpg" alt="Service 2">
-            <img src="ldc3.jpg" alt="Service 3">
-            <img src="ldc4.jpg" alt="Service 4">
         </div>
+
         <div class="owner-section">
             <h2>Owner</h2>
             <img src="RAMESH SARKAR.jpg" alt="Owner">
+	<p>RAMESH SARKAR</p>
         </div>
-        <div class="drivers-section">
-            <h2>Our Drivers</h2>
-            <div class="catalog-section">
-                <img src="Gobindo Mondal.jpg" alt="Driver 1">
-                <img src="Animesh Bayan.jpg" alt="Driver 2">
-                <img src="Subhas Pal.jpg" alt="Driver 3">
-                <img src="SAYAN SAHA.jpg" alt="Driver 4">
-                <img src="driver5.jpg" alt="Driver 5">
-            </div>
+
+ <div class="drivers-section">
+    <h2>Our Drivers</h2>
+    <div class="drivers-grid">
+        <div class="driver-profile">
+            <img src="Gobindo Mondal.jpg" alt="Gobindo Mondal">
+            <p>Gobindo Mondal</p>
+        </div>
+        <div class="driver-profile">
+            <img src="Animesh Bayan.jpg" alt="Animesh Bayan">
+            <p>Animesh Bayan</p>
+        </div>
+        <div class="driver-profile">
+            <img src="Subhas Pal.jpg" alt="Subhas Pal">
+            <p>Subhas Pal</p>
+        </div>
+        <div class="driver-profile">
+            <img src="SAYAN SAHA.jpg" alt="Sayan Saha">
+            <p>Sayan Saha</p>
+        </div>
+        <div class="driver-profile">
+            <img src="Biswajit Roy.jpg" alt="Biswajit Roy">
+            <p>Biswajit Roy</p>
         </div>
     </div>
+</div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelector(".container").classList.add("show");
