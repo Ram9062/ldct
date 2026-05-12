@@ -1,299 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lokenath Drivers Centre & Travels</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ff7e5f, #feb47b);
-      animation: backgroundAnimation 5s infinite alternate;
-      overflow-x: hidden;
-      touch-action: auto;
-      scroll-behavior: smooth;
-    }
 
-    @keyframes backgroundAnimation {
-      0% { background: linear-gradient(to right, #ff7e5f, #feb47b); }
-      100% { background: linear-gradient(to right, #6a11cb, #2575fc); }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .container {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s ease-out forwards;
-    }
+<title>Lokenath Drivers Centre & Travels</title>
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
+<style>
 
-    .fade-in-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .header img {
-      width: 200px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .header img:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.3));
-    }
-
-    .button-container a {
-      display: inline-block;
-      padding: 12px 20px;
-      color: blue;
-      text-decoration: none;
-      margin: 10px;
-      font-size: 18px;
-      border-radius: 5px;
-      transition: transform 0.3s, background 0.3s;
-      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .button-container a:hover {
-      background-color: darkorange;
-      transform: scale(1.1);
-    }
-
-    .contact-section a {
-      display: inline-block;
-      color: blue;
-      text-decoration: none;
-      margin: 15px;
-      font-size: 18px;
-      border-radius: 5px;
-      transition: transform 0.3s, background 0.3s;
-      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .contact-section a:hover {
-      background-color: white;
-      transform: scale(1.1);
-    }
-
-    .video-section {
-  width: 100%;
-  max-width: 600px;
-  margin: 20px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+:root{
+  --primary:#1e3c72;
+  --secondary:#2a5298;
+  --accent:#ff7a18;
 }
 
-.video-section iframe {
-  width: 100%;
-  height: 340px;
-  border: none;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+html{
+  scroll-behavior:smooth;
 }
 
-.fade-in-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#1e3c72,#2a5298,#0f2027);
+  background-size:400% 400%;
+  animation:gradientMove 12s ease infinite;
+  color:#fff;
 }
 
+@keyframes gradientMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
+/* FLOAT MENU BUTTON */
 
-    .map-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
-    }
+.floating-menu-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
 
-    .map-section a {
-      background-color: red;
-      padding: 12px 25px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      border-radius: 5px;
-      transition: background 0.3s, transform 0.3s;
-      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-    }
+  width:58px;
+  height:58px;
 
-    .map-section a:hover {
-      background-color: darkred;
-      transform: scale(1.1);
-    }
+  background:rgba(0,0,0,0.75);
 
-    .barn-door {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 50%;
-      height: 100%;
-      background: black;
-      transform-origin: left;
-      animation: barnDoorLeft 1.5s ease-out forwards;
-    }
+  border-radius:50%;
 
-    .barn-door.right {
-      left: 50%;
-      transform-origin: right;
-      animation: barnDoorRight 1.5s ease-out forwards;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    @keyframes barnDoorLeft {
-      from { transform: scaleX(1); }
-      to { transform: scaleX(0); }
-    }
+  font-size:30px;
+  color:#fff;
 
-    @keyframes barnDoorRight {
-      from { transform: scaleX(1); }
-      to { transform: scaleX(0); }
-    }
+  cursor:pointer;
 
-    @media (max-width: 768px) {
-      .video-section iframe {
-        width: 100%;
-      }
-    }
+  z-index:3000;
 
-    /* Blinking animations */
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+  backdrop-filter:blur(10px);
 
-    @keyframes colorBlink {
-      0%, 100% { color: blue; }
-      50% { color: red; }
-    }
+  box-shadow:0 5px 18px rgba(0,0,0,0.4);
 
-    @keyframes glowBlink {
-      0%, 100% {
-        text-shadow: 0 0 5px #fff, 0 0 10px orange, 0 0 15px red;
-      }
-      50% {
-        text-shadow: none;
-      }
-    }
+  transition:.3s;
+}
 
-    .blink {
-      animation: blink 1s infinite;
-    }
+.floating-menu-btn:hover{
+  transform:scale(1.08);
+}
 
-    .color-blink {
-      animation: colorBlink 1s infinite;
-    }
+/* FLOAT MENU */
 
-    .glow-blink {
-      animation: glowBlink 1s infinite;
-    }
-  </style>
+.floating-menu{
+  position:fixed;
+
+  top:90px;
+  right:20px;
+
+  width:240px;
+
+  background:rgba(0,0,0,0.93);
+
+  border-radius:20px;
+
+  padding:10px 0;
+
+  display:none;
+  flex-direction:column;
+
+  z-index:3000;
+
+  backdrop-filter:blur(15px);
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.45);
+}
+
+.floating-menu.show{
+  display:flex;
+}
+
+.floating-menu a{
+  color:#fff;
+  text-decoration:none;
+
+  padding:16px 22px;
+
+  transition:.3s;
+
+  font-weight:500;
+}
+
+.floating-menu a:hover{
+  background:rgba(255,255,255,0.08);
+  color:var(--accent);
+}
+
+/* HEADER */
+
+.header-bar{
+  text-align:center;
+  padding:60px 20px 20px;
+}
+
+.header-bar img{
+  width:120px;
+  margin-bottom:15px;
+}
+
+.header-bar h1{
+  font-size:38px;
+  margin-bottom:8px;
+}
+
+.header-bar p{
+  opacity:.9;
+  font-size:18px;
+}
+
+/* SECTION */
+
+.section{
+  max-width:1100px;
+  margin:25px auto;
+  padding:30px;
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+
+  text-align:center;
+
+  opacity:0;
+  transform:translateY(30px);
+
+  transition:.6s;
+}
+
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* BUTTONS */
+
+.button-container a{
+  display:inline-block;
+
+  padding:14px 26px;
+  margin:10px;
+
+  background:linear-gradient(45deg,var(--accent),#ffb347);
+
+  color:#000;
+  text-decoration:none;
+  font-weight:600;
+
+  border-radius:30px;
+
+  transition:.3s;
+}
+
+.button-container a:hover{
+  transform:scale(1.05);
+}
+
+/* FORM */
+
+form{
+  max-width:600px;
+  margin:auto;
+
+  display:grid;
+  gap:14px;
+}
+
+input,
+select,
+textarea{
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+}
+
+textarea{
+  resize:none;
+  height:100px;
+}
+
+.submit-btn{
+  background:var(--accent);
+  color:white;
+
+  padding:14px;
+
+  border:none;
+  border-radius:30px;
+
+  font-size:18px;
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.submit-btn:hover{
+  transform:scale(1.03);
+}
+
+/* DRIVER SLIDER */
+
+.driver-slider{
+  overflow:hidden;
+  margin-top:20px;
+}
+
+.driver-track{
+  display:flex;
+  gap:25px;
+  animation:scrollDrivers 20s linear infinite;
+}
+
+.driver-card{
+  min-width:120px;
+  text-align:center;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:12px;
+  border-radius:15px;
+}
+
+.driver-card img{
+  width:95px;
+  height:95px;
+
+  border-radius:50%;
+  object-fit:cover;
+
+  border:3px solid var(--accent);
+}
+
+.driver-card p{
+  margin-top:10px;
+  font-size:14px;
+  font-weight:600;
+}
+
+@keyframes scrollDrivers{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* GOOGLE REVIEWS */
+
+.review-box{
+  margin-top:20px;
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.08);
+}
+
+.review-rating{
+  font-size:65px;
+  color:#FFD700;
+  font-weight:700;
+}
+
+.review-stars{
+  font-size:30px;
+  letter-spacing:5px;
+  color:#FFD700;
+  margin:15px 0;
+}
+
+.review-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:14px 30px;
+  border-radius:35px;
+  background:linear-gradient(45deg,#4285F4,#34A853);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 5px 18px rgba(0,0,0,0.3);
+  transition:.3s;
+}
+
+.review-btn:hover{
+  transform:scale(1.05);
+}
+
+/* LOCATION BUTTON */
+
+.location-btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:14px 28px;
+
+  background:var(--accent);
+
+  color:#fff;
+  border-radius:30px;
+
+  text-decoration:none;
+  font-weight:600;
+
+  transition:.3s;
+}
+
+.location-btn:hover{
+  transform:scale(1.05);
+}
+
+/* VIDEOS */
+
+.video-wrapper{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.video-section{
+  flex:1 1 300px;
+  max-width:340px;
+
+  border-radius:16px;
+  overflow:hidden;
+
+  background:#000;
+}
+
+.video-section iframe{
+  width:100%;
+  height:220px;
+  border:none;
+}
+
+/* SOCIAL */
+
+.social-row{
+  margin-top:20px;
+}
+
+.social-row img{
+  width:48px;
+  margin:0 10px;
+
+  border-radius:12px;
+
+  transition:.3s;
+}
+
+.social-row img:hover{
+  transform:scale(1.2);
+}
+
+/* CALL FLOAT ICON */
+
+.call-float{
+  position:fixed;
+
+  top:70px;
+  left:15px;
+
+  width:60px;
+  height:60px;
+
+  background:#ff7a18;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+
+  z-index:3000;
+
+  transition:.3s;
+}
+
+.call-float img{
+  width:32px;
+  height:32px;
+}
+
+.call-float:hover{
+  transform:scale(1.08);
+}
+
+/* WHATSAPP FLOAT ICON */
+
+.whatsapp-float{
+  position:fixed;
+
+  top:145px;
+  left:15px;
+
+  width:60px;
+  height:60px;
+
+  background:#25d366;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+
+  z-index:3000;
+
+  transition:.3s;
+}
+
+.whatsapp-float img{
+  width:32px;
+  height:32px;
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.08);
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:30px;
+  opacity:.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .header-bar h1{
+    font-size:30px;
+  }
+
+  .header-bar p{
+    font-size:15px;
+  }
+
+  .floating-menu{
+    width:210px;
+  }
+
+  .call-float{
+    top:65px;
+    left:10px;
+  }
+
+  .whatsapp-float{
+    top:135px;
+    left:10px;
+  }
+
+}
+
+</style>
+
 </head>
-<body>
-  <div class="barn-door"></div>
-  <div class="barn-door right"></div>
 
-  <div class="container">
-    <div class="header fade-in-section">
-      <img src="LDC&T.png" alt="Lokenath Drivers Centre & Travels" />
-      <h1>LOKENATH DRIVERS CENTRE & TRAVELS (LDC&T)</h1>
+<body>
+
+<!-- FLOAT MENU BUTTON -->
+
+<div class="floating-menu-btn" onclick="toggleMenu()">
+  ☰
+</div>
+
+<!-- FLOAT MENU -->
+
+<div class="floating-menu" id="menu">
+
+  <a href="#hours" onclick="closeMenu()">Service Hours</a>
+
+  <a href="#services" onclick="closeMenu()">Services</a>
+
+  <a href="#booking" onclick="closeMenu()">Book Now</a>
+
+  <a href="#drivers" onclick="closeMenu()">Drivers</a>
+
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+
+  <a href="#location" onclick="closeMenu()">Location</a>
+
+  <a href="#videos" onclick="closeMenu()">Videos</a>
+
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+
+</div>
+
+<!-- HEADER -->
+
+<div class="header-bar">
+
+  <img src="LDC&T.png" alt="LDC&T Logo">
+
+  <h1>Lokenath Drivers Centre & Travels</h1>
+
+  <p>Professional Drivers & Car Rental Services</p>
+
+</div>
+
+<!-- HOURS -->
+
+<div class="section" id="hours">
+
+  <h2>Service Hours</h2>
+
+  <br>
+
+  <p>
+    Booking Available from
+    <b>06:00 AM</b> to
+    <b>11:30 PM</b>
+  </p>
+
+</div>
+
+<!-- SERVICES -->
+
+<div class="section" id="services">
+
+  <h2>Our Services</h2>
+
+  <br>
+
+  <div class="button-container">
+
+    <a href="Driver Services.html">
+      Driver Services
+    </a>
+
+    <a href="Car Services.html">
+      Car Rental Services
+    </a>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSegMW0jRELVLbgQWDoYpkAwQAcyp_m6IPLkWGvkH1KWFzltcQ/viewform?usp=sf_link">
+      Driver Registration
+    </a>
+
+  </div>
+
+</div>
+
+<!-- BOOKING -->
+
+<div class="section" id="booking">
+
+  <h2>Book Driver / Car</h2>
+
+  <br>
+
+  <form onsubmit="sendWhatsApp(); return false;">
+
+    <input type="text" id="name" placeholder="Your Name" required>
+
+    <input
+      type="tel"
+      id="phone"
+      placeholder="10 Digit Mobile Number"
+      pattern="[0-9]{10}"
+      maxlength="10"
+      required
+    >
+
+    <select id="service">
+      <option>Driver Service</option>
+      <option>Car Rental</option>
+    </select>
+
+    <input type="date" id="date" required>
+
+    <input type="time" id="time" required>
+
+    <textarea
+      id="msg"
+      placeholder="Pickup Location / Details"
+    ></textarea>
+
+    <button type="submit" class="submit-btn">
+      Submit Booking
+    </button>
+
+  </form>
+
+</div>
+
+<!-- DRIVERS -->
+
+<div class="section" id="drivers">
+
+  <h2>Our Professional Drivers</h2>
+
+  <div class="driver-slider">
+
+    <div class="driver-track">
+
+      <div class="driver-card">
+        <img src="Gobindo Mondal.jpg">
+        <p>Gobindo</p>
+      </div>
+
+      <div class="driver-card">
+        <img src="Animesh Bayan.jpg">
+        <p>Animesh</p>
+      </div>
+
+      <div class="driver-card">
+        <img src="Subhas Pal.jpg">
+        <p>Subhas</p>
+      </div>
+
+      <div class="driver-card">
+        <img src="Biswajit Roy.jpg">
+        <p>Biswajit</p>
+      </div>
+
+      <div class="driver-card">
+        <img src="Tapos Mondal.jpg">
+        <p>Tapos</p>
+      </div>
+
     </div>
 
-    <p class="fade-in-section">
-      Experienced drivers and rental cars are provided.<br /><br />
-      Booking Time: 06:00AM To 11:30PM
+  </div>
+
+</div>
+
+<!-- REVIEWS -->
+
+<div class="section" id="reviews">
+
+  <h2>⭐ Google Reviews</h2>
+
+  <div class="review-box">
+
+    <div class="review-rating">
+      4.8 ★
+    </div>
+
+    <p>
+      Rated by 100+ Happy Customers
     </p>
 
-    <!-- Blinking links -->
-    <div class="button-container fade-in-section">
-      <a href="Driver Services.html" class="blink color-blink glow-blink">→ Driver Services</a>
-      <a href="Car Services.html" class="blink color-blink glow-blink">→ Car Services</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSegMW0jRELVLbgQWDoYpkAwQAcyp_m6IPLkWGvkH1KWFzltcQ/viewform?usp=sf_link" class="blink color-blink glow-blink">
-        → Driver Registration
-      </a>
+    <div class="review-stars">
+      ★★★★★
     </div>
 
-    <div class="contact-section fade-in-section">
-      <a href="tel:+91 9748144920"><img src="call1.png" alt="Call" width="40" /></a>
-      <a href="https://wa.me/919062538991" target="_blank"><img src="wp.png" alt="WhatsApp" width="40" /></a>
-    </div>
+    <a
+      href="https://www.google.com/search?q=LOKENATH+DRIVERS+CENTRE+%26+TRAVELS+(LDC%26T)"
+      target="_blank"
+      class="review-btn"
+    >
+      ⭐ Read Google Reviews
+    </a>
 
-    <hr />
+  </div>
 
-    <div class="map-section fade-in-section">
-      <a href="https://g.co/kgs/jbdbDTf" target="_blank">
-        📍 View on Google Maps
-      </a>
-    </div>
-
-    <br />
-
-    <div class="section-images fade-in-section">
-      <img src="IND MAP1.jpg" alt="India Map" width="48%" />
-      <img src="service poster.jpg" alt="service poster" width="32%" />
-    </div>
-
-    <hr />
-    <h1>Video</h1>
-
-    <!-- Video Section 1 -->
-<div class="video-section fade-in-section">
-  <iframe src="https://www.youtube.com/embed/1kn_RoqpWYk" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<!-- Video Section 2 -->
-<div class="video-section fade-in-section">
-  <iframe src="https://www.youtube.com/embed/lmVb8GHReWM?si=DBr070_ISkfutCNz" frameborder="0" allowfullscreen></iframe>
+<!-- LOCATION -->
+
+<div class="section" id="location">
+
+  <h2>Our Location</h2>
+
+  <br>
+
+  <p>Tap below to open our location in Google Maps</p>
+
+  <a
+    href="https://g.co/kgs/jbdbDTf"
+    target="_blank"
+    class="location-btn"
+  >
+    📍 Open in Google Maps
+  </a>
+
 </div>
 
-<!-- Video Section 3 -->
-<div class="video-section fade-in-section">
-  <iframe src="https://www.youtube.com/embed/QUX2CVki1r0?feature=share" frameborder="0" allowfullscreen></iframe>
+<!-- VIDEOS -->
+
+<div class="section" id="videos">
+
+  <h2>Our Videos</h2>
+
+  <br>
+
+  <div class="video-wrapper">
+
+    <div class="video-section">
+
+      <iframe
+        src="https://www.youtube.com/embed/1kn_RoqpWYk"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <div class="video-section">
+
+      <iframe
+        src="https://www.youtube.com/embed/fqDBy0x2HYI"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <div class="video-section">
+
+      <iframe
+        src="https://www.youtube.com/embed/1L_KsiSuI-4"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </div>
+
 </div>
 
+<!-- CONTACT -->
 
+<div class="section" id="contact">
 
+  <h2>Connect With Us</h2>
 
+  <div class="social-row">
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const sections = document.querySelectorAll(".fade-in-section");
-      const options = { threshold: 0.3 };
+    <a href="https://g.co/kgs/jbdbDTf" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png">
+    </a>
 
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
+    <a href="http://youtube.com/@RameshSarkar-o3s" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+    </a>
 
-      sections.forEach(section => observer.observe(section));
+    <a href="https://www.facebook.com/profile.php?id=100094067861950" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png">
+    </a>
+
+    <a href="https://www.instagram.com/lokenath.dv.centre.and.travels/" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+    </a>
+
+  </div>
+
+</div>
+
+<!-- CALL FLOAT ICON -->
+
+<a class="call-float"
+   href="tel:+919062538991">
+
+   <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png">
+
+</a>
+
+<!-- WHATSAPP FLOAT ICON -->
+
+<a class="whatsapp-float"
+   href="https://wa.me/919062538991"
+   target="_blank">
+
+   <img src="https://cdn.freelogovectors.net/wp-content/uploads/2020/11/whatsapp-business-logo.png">
+
+</a>
+
+<!-- FOOTER -->
+
+<div class="footer">
+  © 2026 LDC&T • All Rights Reserved
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* FLOAT MENU TOGGLE */
+
+function toggleMenu(){
+
+  document
+    .getElementById("menu")
+    .classList
+    .toggle("show");
+
+}
+
+/* CLOSE MENU */
+
+function closeMenu(){
+
+  document
+    .getElementById("menu")
+    .classList
+    .remove("show");
+
+}
+
+/* CLOSE MENU WHEN CLICK OUTSIDE */
+
+document.addEventListener("click", function(e){
+
+  let menu=document.getElementById("menu");
+
+  let btn=document.querySelector(".floating-menu-btn");
+
+  if(
+    !menu.contains(e.target)
+    &&
+    !btn.contains(e.target)
+  ){
+    menu.classList.remove("show");
+  }
+
+});
+
+/* SMOOTH SCROLL MENU */
+
+document.querySelectorAll('.floating-menu a').forEach(anchor => {
+
+  anchor.addEventListener('click', function (e) {
+
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href');
+
+    const targetSection = document.querySelector(targetId);
+
+    targetSection.scrollIntoView({
+      behavior: 'smooth'
     });
-  </script>
+
+  });
+
+});
+
+/* WHATSAPP BOOKING */
+
+function sendWhatsApp(){
+
+  let n=document.getElementById("name").value;
+
+  let p=document.getElementById("phone").value;
+
+  let s=document.getElementById("service").value;
+
+  let d=document.getElementById("date").value;
+
+  let t=document.getElementById("time").value;
+
+  let m=document.getElementById("msg").value;
+
+  let url=
+  `https://wa.me/919062538991?text=
+Booking Request:%0A
+Name:${n}%0A
+Phone:${p}%0A
+Service:${s}%0A
+Date:${d}%0A
+Time:${t}%0A
+Details:${m}`;
+
+  window.open(url,'_blank');
+
+}
+
+/* SCROLL ANIMATION */
+
+const sections=document.querySelectorAll(".section");
+
+const observer=new IntersectionObserver(entries=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+
+      entry.target.classList.add("visible");
+
+    }
+
+  });
+
+},{threshold:.2});
+
+sections.forEach(section=>{
+
+  observer.observe(section);
+
+});
+
+</script>
+
 </body>
-</html>
+</html> 
